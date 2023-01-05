@@ -1,23 +1,35 @@
 import style from './style.css'
 
-const key = 'vN5BHjaVCeg1k0FRWZwB5I5pSv6lwEki';
+const key = '1d189a7a6ae4d6c654959a31a08f2075';
 
 const searchBtn = document.getElementById('search-btn')
-const img = document.querySelector('img');
+const weatherTemp = document.getElementById('temp')
 const searchInpt = document.getElementById('search-bar')
 
-makeRequest("Hello")
-function makeRequest(str){
-    fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${str}`, {mode: 'cors'})
+
+
+
+function secondRequest(str){
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${str}&APPID=${key}`, {mode: 'cors'})
     .then((response) => {
         return response.json();
     })
     .then((response)=>{
-        img.src = response.data.images.original.url;
+        console.log(response)
+        displayTemp(response.main.temp, response.name)
     });
-};
+
+}
+function displayTemp(n,m){
+    weatherTemp.innerText = '';
+    let convert = Math.round((n - 273.15) * 9 /5 + 32);
+    weatherTemp.innerText = `In ${m}, It is ${convert} Farenheight`
+    
+    console.log(Math.round(convert))
+}
 
 searchBtn.addEventListener('click', () => {
-    makeRequest(searchInpt.value);
-
+    secondRequest(searchInpt.value);
 });
+
+
