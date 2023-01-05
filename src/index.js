@@ -1,35 +1,32 @@
 import style from './style.css'
 
-const key = '1d189a7a6ae4d6c654959a31a08f2075';
-
 const searchBtn = document.getElementById('search-btn')
 const weatherTemp = document.getElementById('temp')
 const searchInpt = document.getElementById('search-bar')
 
-function secondRequest(str){
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${str}&APPID=${key}`, {mode: 'cors'})
-    .then((response) => {
-        return response.json();
-    })
-    .then((response)=>{
-        console.log(response)
-        displayTemp(response.main.temp, response.name)
-    });
 
+
+async function getData() {
+    //wait for promise from Fetch to resolve
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=Chicago&APPID=1d189a7a6ae4d6c654959a31a08f2075`, {mode: 'cors'});
+    //wait for .json() to return promise
+    const weatherData = await response.json();
+    return weatherData;
 }
 
 
 
-function displayTemp(n,m){
+
+async function displayTemp() {
     weatherTemp.innerText = '';
-    let convert = Math.round((n - 273.15) * 9 /5 + 32);
-    weatherTemp.innerText = `In ${m}, It is ${convert} Farenheight`
+    //wait for kevlin variable to return promise and Data. 
+    const kelvin =  await getData();
+    let convert = Math.round((kelvin.main.temp - 273.15) * 9 /5 + 32);
+    weatherTemp.innerText = `It is ${convert}'s degrees Farenheight in Chicago`;
     
-    console.log(Math.round(convert))
-}
+};
 
-searchBtn.addEventListener('click', () => {
-    secondRequest(searchInpt.value);
-});
+searchBtn.addEventListener('click',displayTemp)
+
 
 
