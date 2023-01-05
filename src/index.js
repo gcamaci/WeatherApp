@@ -6,9 +6,6 @@ const searchBtn = document.getElementById('search-btn')
 const weatherTemp = document.getElementById('temp')
 const searchInpt = document.getElementById('search-bar')
 
-
-
-
 function secondRequest(str){
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${str}&APPID=${key}`, {mode: 'cors'})
     .then((response) => {
@@ -20,6 +17,9 @@ function secondRequest(str){
     });
 
 }
+
+
+
 function displayTemp(n,m){
     weatherTemp.innerText = '';
     let convert = Math.round((n - 273.15) * 9 /5 + 32);
