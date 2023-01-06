@@ -14,9 +14,6 @@ async function getData() {
     return weatherData;
 }
 
-
-
-
 async function displayTemp() {
     weatherTemp.innerText = '';
     //wait for kevlin variable to return promise and Data. 

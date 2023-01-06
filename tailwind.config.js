@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./dist/*.html'],
   theme: {
-    extend: {},
+    extend: {
+      flexGrow: {
+        '2': 2
+      }
+    },
   },
   plugins: [],
 }
