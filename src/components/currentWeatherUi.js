@@ -1,5 +1,7 @@
 import { getData } from "./fetchWeather";
 import { getFarenheight} from "./utils";
+
+
 const displayWeather = async (str) => {
     const weather = await getData();
     displayCurrent(weather)
