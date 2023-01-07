@@ -8,65 +8,37 @@
     <link rel="stylesheet" href="../src/style.css">
 </head>
 <body>
-    <header class="sm:w-screen flex justify-center h-1/5 p-3 border border-sky-500"">
-        <div class="border border-sky-500">
-            <input type="search" id="city-input" name="city-input" class=""></input>
-            <button id="search-btn" type="button" class="border border-sky-500">Search</button>
+
+    <div id="content-wrapper" class="border border-red-500 h-screen flex justify-center items-center bg-cyan-200">
+        <div class="shadow-2xl h-4/6 w-4/6 bg-zinc-800/20">
+            <div id="content-container" class=" ">
+                <div>
+                    <input type="search" id="city-input" name="city-input" class=""></input>
+                    <button id="search-btn" type="button" class="border border-sky-500">Search</button>
+                </div>
+                <div id="current_weather_data">
+                    <div class="flex">
+                        <div class="grow">
+                            <h1 id="city_title" class="text-7xl">Chicago</h1>
+                            <p id="weather_tag" class="text-5xl">Partly Cloudy</p>
+                            <div class="flex items-center">
+                                <h2 class="text-7xl">57</h2>
+                                <p id="clock">12:00:00</p>
+                            </div>
+                            
+                        </div>
+                        <div id="calender-frame" class="grow">
+                            <p>31</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+
+                </div>
+            </div>
         </div>
-    </header>
-    <main class="flex">
-        <section id="current_weather_section" class="border border-sky-500 flex-none w-3/12">
-            <div>
-                <h2>12:00:00</h2>
-                <h3>Scattered Clouds</h3>
-                <h1>Chicago</h1>
-            </div>
-            <div class="flex items-center">
-                <div>
-                    51
-                </div>
-                <div>
-                    <img src="#">
-                </div>
-                <div>
-                    <img src="#">
-                </div>
-            </div>
 
-
-        </section>
-        <section class="grow border border-sky-500 ">
-           <div class="flex">
-            <div class="grow">
-                <p>day</p>
-            </div>
-            <div class="grow">
-                <p>day</p>
-            </div>
-            <div class="grow">
-                <p>day</p>
-            </div>
-            <div class="grow">
-                <p>day</p>
-            </div>
-            <div class="grow">
-                <p>day</p>
-            </div>
-            <div class="grow">
-                <p>day</p>
-            </div>
-            <div class="grow">
-                <p>day</p>
-            </div>
-           </div>
-           <div>
-           </div>
-        </section>
-        <section class="border border-sky-500 flex-none w-3/12">
-
-        </section>
-    </main>
-    
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
