@@ -1,33 +1,28 @@
-import { getData } from "./fetchWeather";
+import { fetchCurrent, fetchForcast} from "./fetchWeather";
 import { getFarenheight} from "./utils";
 
 
-const displayWeather = async (str) => {
-    const weather = await getData();
-    displayCurrent(weather)
+const displayWeather = async () => {
+    const currentWeather = await fetchCurrent()
+    const forcastWeather = await fetchForcast
+    displayCurrent(currentWeather)
 
 };
 
 const displayCurrent = (weather) => {
     const headContainer = document.getElementById('current_weather_data')
-    const weatherTag = document.getElementById('weather_tag')
     const cityTitle = document.getElementById('city_title')
+    const weatherTag = document.getElementById('weather_tag')
+    const mainTempTag = document.getElementById('main_temp_display')
     const clock = document.getElementById('clock')
-    let temp = getFarenheight(weather.main.temp);
-    let cityName = weather.name;
-    
-    //let time = updateTime(`America/${weather.name}`)
-    cityTitle.innerText =`${weather.name}`
-    weatherTag.innerText = `${weather.weather[0].main}`
-    
 
-    console.log(weather);
-    console.log(cityName);
-    console.log(temp)
-    console.log(weather.main.humidity)
-    console.log(weather.main.pressure)
-    console.log(weather.wind.speed)
-    console.log(`${weather.name}`)
+    cityTitle.innerText = weather.name
+    //create a util function to format weatherTag
+    weatherTag.innerText = weather.weather[0].description
+    
+    //weather desc
+    console.log(weather.weather[0].description) 
+   
     
 };
 
