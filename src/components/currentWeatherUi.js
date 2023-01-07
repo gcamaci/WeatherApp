@@ -6,7 +6,7 @@ const displayWeather = async () => {
     const currentWeather = await fetchCurrent()
     const forcastWeather = await fetchForcast()
     displayCurrent(currentWeather)
-    console.log(getWeatherForcast(forcastWeather))
+    getWeatherForcast(forcastWeather)
 
 };
 
@@ -21,7 +21,7 @@ const displayCurrent = (currentWeather) => {
     weatherTag.innerText = capitalize(currentWeather.weather[0].description)
     mainTempTag.innerText = getFarenheight(currentWeather.main.temp)
     
-    console.log(currentWeather.weather[0].icon)
+    
     weatherImg.src = `https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`
 
     

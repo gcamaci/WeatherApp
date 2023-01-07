@@ -14,13 +14,14 @@ const getSearchInpt = () => {
 // should return the object back with only 5 list items/ each day
 
 const getWeatherForcast = (weather) => {
-    const forecast = weather.list.filter((item,index,self) =>{
-        return index === self.findIndex(day => day.dt_txt.split(' ')[0] === item.dt_txt.split(' ')[0])
-    });
-    
-    
-    return forecast
-};
+    for (let i = weather.list.length - 1; i >= 0; i--) {
+      if (weather.list[i].dt_txt.split(' ')[1] !== '12:00:00') {
+        weather.list.splice(i, 1);
+      }
+    }
+  
+    return weather;
+  };
 
 //formats description string capitalize sentence
 const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
