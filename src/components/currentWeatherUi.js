@@ -1,5 +1,5 @@
 import { fetchCurrent, fetchForcast} from "./fetchWeather";
-import { getFarenheight} from "./utils";
+import { getFarenheight,capitalize} from "./utils";
 
 
 const displayWeather = async () => {
@@ -15,13 +15,15 @@ const displayCurrent = (weather) => {
     const weatherTag = document.getElementById('weather_tag')
     const mainTempTag = document.getElementById('main_temp_display')
     const clock = document.getElementById('clock')
-
     cityTitle.innerText = weather.name
-    //create a util function to format weatherTag
-    weatherTag.innerText = weather.weather[0].description
+    weatherTag.innerText = capitalize(weather.weather[0].description)
+    mainTempTag.innerText = getFarenheight(weather.main.temp)
     
-    //weather desc
-    console.log(weather.weather[0].description) 
+
+    console.log(weather.main.temp)
+
+    
+    
    
     
 };

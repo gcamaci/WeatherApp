@@ -17,10 +17,13 @@ const getWeatherForcast = (weather) => {
 
 };
 
+//formats description string capitalize sentence
+const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
 
 export{
     getSearchInpt,
     getFarenheight,
+    capitalize
   
     
 }
