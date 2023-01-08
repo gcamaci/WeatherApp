@@ -9,13 +9,13 @@
 </head>
 <body>
     <div id="content-wrapper" class="h-screen flex justify-center items-center bg-cyan-200">
-        <div class="shadow-2xl h-4/6 w-4/6 bg-zinc-800/20">
-            <div id="content-container" class=" ">
+        <div class="shadow-2xl h-auto w-4/6 bg-zinc-800/20">
+            <div id="content-container" class="h-full">
                 <div>
                     <input type="search" id="city-input" name="city-input" class=""></input>
                     <button id="search-btn" type="button" class="border border-sky-500">Search</button>
                 </div>
-                <div id="current_weather_data">
+                <div class="flex flex-col h-full">
                     <div class="flex">
                         <div class="grow">
                             <h1 id="city_title" class="text-7xl">Chicago</h1>
@@ -29,9 +29,13 @@
                             <img id="main_temp_img" src="#">
                         </div>
                     </div>
-                </div>
-                <div>
-
+                    <div id="daily-forcast" class="grid grid-cols-5 h-full">
+                        <div class="border-2 border-sky-500 h-64"></div>
+                        <div class="border-2 border-sky-500 h-64"></div>
+                        <div class="border-2 border-sky-500 h-64"></div>
+                        <div class="border-2 border-sky-500 h-64"></div>
+                        <div class="border-2 border-sky-500 h-64"></div>
+                    </div>
                 </div>
             </div>
         </div>

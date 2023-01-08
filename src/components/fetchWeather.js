@@ -1,6 +1,6 @@
 import { getSearchInpt } from "./utils";
 //fetches data by city. 
-
+const weatherInfo = {}
 async function fetchCurrent() {
     try{
         let cityName = getSearchInpt();
@@ -12,7 +12,7 @@ async function fetchCurrent() {
         }
         const weatherData = await response.json();
         console.log(weatherData)
-
+        
         //returns response
         return weatherData;
 
