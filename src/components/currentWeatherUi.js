@@ -1,7 +1,6 @@
 import { fetchCurrent, fetchForcast} from "./fetchWeather";
 import { getFarenheight,capitalize, getWeatherForcast} from "./utils";
 
-
 const displayWeather = async () => {
     const currentWeather = await fetchCurrent()
     const forcastWeather = await fetchForcast()
@@ -9,6 +8,7 @@ const displayWeather = async () => {
     getWeatherForcast(forcastWeather)
 
 };
+
 
 const displayCurrent = (currentWeather) => {
     const headContainer = document.getElementById('current_weather_data')

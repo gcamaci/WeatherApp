@@ -33,10 +33,6 @@ const fetchForcast = async () => {
     }
 };
 
-const weatherController = async () =>{
-    const currentData = await fetchCurrent();
-    const dailyForcast = await fetchForcast()
-}
 export{
     fetchCurrent,
     fetchForcast
