@@ -13,23 +13,14 @@ async function fetchWeatherData() {
         const coords = currentData.coord
         const forecastResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&appid=1d189a7a6ae4d6c654959a31a08f2075`, {mode:'cors'});
         const forecastData = await forecastResponse.json();
-        console.log(currentData);
-        console.log(forecastData)
         //returns response
         return {
-            /*  city name
-                coords
-                current main
-            */
            city_info: forecastData.city,
            current_temps: currentData.main,
            current_wind_speed: currentData.wind.speed,
            current_description: currentData.weather[0].description,
            current_weater_icon: currentData.weather[0].icon,
            week_forecast: forecastData.list
-
-
-
         };
     } catch (error){
         console.error(error)

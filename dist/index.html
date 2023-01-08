@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="content-wrapper" class="h-screen flex justify-center items-center bg-cyan-200">
-        <div class="shadow-2xl h-auto w-4/6 backdrop-blur bg-zinc/50">
+        <div class="shadow-2xl h-auto w-4/6 backdrop-blur bg-white/50">
             <div id="content-container" class="h-full">
                 <div>
                     <input type="search" id="city-input" name="city-input" class=""></input>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="flex flex-col h-full">
                     <div class="flex">
-                        <div class="grow">
+                        <div class="w-1/2">
                             <h1 id="city_title" class="text-7xl">Chicago</h1>
                             <p id="weather_tag" class="text-5xl">Partly Cloudy</p>
                             <div class="flex items-center">
@@ -25,8 +25,34 @@
                                 <p id="clock">12:00:00</p>
                             </div> 
                         </div>
-                        <div id="calender-frame" class="grow">
-                            <img id="main_temp_img" src="#">
+                        <div id="general_weather" class="grow">
+                            <div>
+                                <p>Sunday, January 8th</p>
+                                <img src="#">
+                            </div>
+                            <div class="grid-cols-5">
+                                <div>
+                                    <img src="#">
+                                    <p id="feel_temp">Feels Like</p>
+                                </div>
+                                <div>
+                                    <img src="#">
+                                    <p id="humidity_tag">Humidity</p>
+                                </div>
+                                <div>
+                                    <img src="#">
+                                    <p id="temp_high">High</p>
+                                </div>
+                                <div>
+                                    <img src="#">
+                                    <p id="temp_low">low</p>
+                                </div>
+                                <div>
+                                    <img src="#">
+                                    <p id="wind-speed">1Mph</p>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                     <div id="daily-forcast" class="grid grid-cols-5 h-full">
