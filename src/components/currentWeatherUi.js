@@ -1,11 +1,13 @@
-import { fetchCurrent, fetchForcast} from "./fetchWeather";
+import {fetchWeatherData} from "./fetchWeather";
 import { getFarenheight,capitalize, getWeatherForcast} from "./utils";
 
 const displayWeather = async () => {
-    const currentWeather = await fetchCurrent()
-    const forcastWeather = await fetchForcast()
+    const weatherData  = await fetchWeatherData();
+    console.log(weatherData)
+    /*
     displayCurrent(currentWeather)
     getWeatherForcast(forcastWeather)
+    */
 
 };
 
