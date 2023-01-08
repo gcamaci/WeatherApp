@@ -1,6 +1,5 @@
 import { getSearchInpt } from "./utils";
 //fetches data by city. 
-const weatherInfo = {}
 async function fetchCurrent() {
     try{
         let cityName = getSearchInpt();
@@ -11,8 +10,6 @@ async function fetchCurrent() {
             response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=Chicago&APPID=1d189a7a6ae4d6c654959a31a08f2075`, {mode: 'cors'});
         }
         const weatherData = await response.json();
-        console.log(weatherData)
-        
         //returns response
         return weatherData;
 
@@ -35,6 +32,11 @@ const fetchForcast = async () => {
         console.log(error)
     }
 };
+
+const weatherController = async () =>{
+    const currentData = await fetchCurrent();
+    const dailyForcast = await fetchForcast()
+}
 export{
     fetchCurrent,
     fetchForcast
