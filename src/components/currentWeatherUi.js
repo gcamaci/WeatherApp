@@ -1,3 +1,4 @@
+import {format} from "date-fns";
 import {fetchWeatherData} from "./fetchWeather";
 import { getFarenheight,capitalize, getWeatherForcast} from "./utils";
 
@@ -10,7 +11,8 @@ const displayWeather = async () => {
         weatherData.current_description,
         weatherData.current_temps.temp
     );
-    displayCurrentWeather(weatherData.current_temps,weatherData.current_wind_speed)
+    displayCurrentWeather(weatherData.current_temps,weatherData.current_wind_speed);
+    displayForcast(weatherData.week_forecast);
 
 };
 
@@ -49,7 +51,23 @@ const displayCurrentWeather = (currentTemps,wind) => {
 
 }
 
+const displayForcast = (forcastList) => {
+    let time;
+    let date;
+    const dailyContainers = document.querySelectorAll('.daily') 
+    const forecastData = forcastList.filter(day => day.dt_txt.split(' ')[1] === '12:00:00');
 
+    forecastData.forEach((day,index) => {
+        dailyContainers[index].innerText = `${day.dt_txt.split(' ')[0]}`;
+        console.log(day.dt_txt.split(' ')[0])
+        console.log(new Date(day.dt_txt.split(' ')[0]))
+        console.log(format(new Date(day.dt_txt.split(' '))[0], 'eee'))
+    });
+
+    
+    console.log(forecastData)
+    
+};
 
 
 
