@@ -5,7 +5,7 @@ import moment from 'moment'
 
 const displayWeather = async () => {
     const weatherData  = await fetchWeatherData();
-    console.log(weatherData)
+    
     //display current weather info
     displayGeneralInfo(
         weatherData.city_info.name,
@@ -14,7 +14,7 @@ const displayWeather = async () => {
     );
     displayCurrentWeather(weatherData.current_temps,weatherData.current_wind_speed);
     displayForcast(weatherData.week_forecast);
-
+    console.log(weatherData)
 };
 
 
@@ -48,20 +48,18 @@ const displayCurrentWeather = (currentTemps,wind) => {
     highTag.innerText = getFarenheight(currentTemps.temp_max)
     lowTag.innerText = getFarenheight(currentTemps.temp_min)
     windTag.innerText = `${wind}MPH`
-    console.log(currentTemps)
+    
 
 }
 
 const displayForcast = (forcastList) => {
-    let time;
-    
     const dailyContainers = document.querySelectorAll('.daily') 
     const forecastData = forcastList.filter(day => day.dt_txt.split(' ')[1] === '12:00:00');
 
     forecastData.forEach((day,index) => {
         let forcastCard = dailyContainers[index]
         forcastCard.innerHTML = ''
-        let date =moment(day.dt_txt)
+        let date = moment(day.dt_txt)
         let dayOfWeek = date.format('dddd' );
        
         const dateTagContainer = document.createElement('div')
@@ -75,28 +73,19 @@ const displayForcast = (forcastList) => {
 
         const tempContainer = document.createElement('div');
         const highContainer = document.createElement('div');
-        const lowContainer = document.createElement('div')
+        highContainer.classList.add('flex', 'flex-col', 'items-center')
+        
 
         const highIcon = document.createElement('p');
-        highIcon.innerText = "H"
-        const lowIcon = document.createElement('p');
-        lowIcon.innerText = "L"
-
+        highIcon.innerText = `${day.weather[0].description}`
         const highTag = document.createElement('p');
-        const lowTag = document.createElement('p');
         highTag.innerText = getFarenheight(day.main.temp_max)
-        lowTag.innerText = getFarenheight(day.main.temp_min)
-
         highContainer.append(highIcon,highTag)
-        lowContainer.append(lowIcon,lowTag)
-
-        tempContainer.append(highContainer,lowContainer)
-
-        
+        tempContainer.appendChild(highContainer)
         forcastCard.append(dateTagContainer,weatherIcon,tempContainer)
        
     });
-    console.log(forecastData)
+    
 };
 
 
