@@ -2,6 +2,7 @@
 import {fetchWeatherData} from "./fetchWeather";
 import { getFarenheight,capitalize, getWeatherForcast} from "./utils";
 import moment from 'moment'
+import { calculateTime } from "./clock";
 
 const displayWeather = async () => {
     const weatherData  = await fetchWeatherData();
@@ -14,6 +15,8 @@ const displayWeather = async () => {
     );
     displayCurrentWeather(weatherData.current_temps,weatherData.current_wind_speed);
     displayForcast(weatherData.week_forecast);
+    console.log(weatherData.city_info.timezone)
+    calculateTime(weatherData.city_info.timezone)
     console.log(weatherData)
 };
 
