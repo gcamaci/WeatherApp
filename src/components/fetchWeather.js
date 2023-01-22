@@ -1,3 +1,4 @@
+import { calculateTime } from "./clock";
 import { getSearchInpt } from "./utils";
 //fetches data by city. 
 async function fetchWeatherData() {
@@ -14,8 +15,10 @@ async function fetchWeatherData() {
         const forecastResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&appid=1d189a7a6ae4d6c654959a31a08f2075`, {mode:'cors'});
         const forecastData = await forecastResponse.json();
         //returns response
+        
         return {
            city_info: forecastData.city,
+           city_offset: calculateTime(currentData.timezone),
            current_temps: currentData.main,
            current_wind_speed: currentData.wind.speed,
            current_description: currentData.weather[0].description,

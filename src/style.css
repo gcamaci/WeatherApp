@@ -12,3 +12,10 @@ img{
     width: 200px;
     height: 200;
 }
+body {
+    background-image: url('./Images/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+}
