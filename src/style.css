@@ -17,10 +17,18 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    
+    background-color: #0a1040;
+    color: white;
     
 }
 .weather-icons{
     width: 64px;
     height: 64px;
+}
+#content-container{
+    background-color: #0e1544;
+}
+.forecast-img{
+    width:120px;
+    height: 120px;
 }

@@ -3,6 +3,14 @@ import {fetchWeatherData} from "./fetchWeather";
 import { getFarenheight,capitalize, getWeatherForcast} from "./utils";
 import moment from 'moment'
 import { calculateTime,clockDisplay} from "./clock";
+import clear_sky from '../Images/clear-sky.png'
+import few_clouds from '../Images/few-clouds.png'
+import scattered_clouds from '../images/scat-clouds.png'
+import broken_clouds from '../Images/broken-clouds.png'
+import shower_rain from '../Images/shower-rain.png'
+import rain from '../images/rain.png'
+import thunderstorm from '../Images/thunder.png'
+import snow_img from '../Images/snowflakes.png'
 
 const displayWeather = async () => {
     const weatherData  = await fetchWeatherData();
@@ -19,7 +27,8 @@ const displayWeather = async () => {
     
     clockDisplay.setOffset(weatherData.city_offset);
     
-    
+    console.log(weatherData.current_weater_icon)
+    console.log(chooseIcon(weatherData.current_weater_icon))
 };
 
 
@@ -74,7 +83,8 @@ const displayForcast = (forcastList) => {
         dateTagContainer.appendChild(dayWeekTag)
 
         const weatherIcon = document.createElement('img');
-        weatherIcon.src = `http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`
+        weatherIcon.src = `${chooseIcon(day.weather[0].icon)}`
+        weatherIcon.classList.add('forecast-img')
 
         const tempContainer = document.createElement('div');
         const highContainer = document.createElement('div');
@@ -88,13 +98,56 @@ const displayForcast = (forcastList) => {
         highContainer.append(highIcon,highTag)
         tempContainer.appendChild(highContainer)
         forcastCard.append(dateTagContainer,weatherIcon,tempContainer)
+
+        console.log(day.weather[0].icon)
        
     });
     
 };
 
 
-
+function chooseIcon(icon_code) {
+    switch(icon_code){
+        case "01n":
+        case "01d":
+            return clear_sky;
+            break;
+        case "02n":
+        case "02d":
+            return few_clouds;
+            break
+        case "03n":
+        case "03d":
+            return scattered_clouds;
+            break;
+        case "04n":
+        case "04d":
+            return broken_clouds;
+            break;
+        case "09n":
+        case "09d":
+            return shower_rain;
+            break;
+        case "10n":
+        case "10d":
+            return rain;
+            break;
+        case "11d":
+        case "11n":
+            return thunderstorm;
+            break;
+        case "13n":
+        case "13d":
+            return snow_img
+            break;
+        case "50n":
+        case "50d":
+            return clear_s;
+            break;
+        default:
+            return clear_sky   
+    }
+}
 export{
     displayWeather
 }
